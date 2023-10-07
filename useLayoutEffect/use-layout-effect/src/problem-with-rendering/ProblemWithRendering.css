@@ -1,0 +1,30 @@
+.container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .2);
+    cursor: pointer;
+    transition: transform .3s ease-out, box-shadow .3s ease-out;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .3);
+}
+
+.button:active {
+    transform: scale(.95);
+    box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .3);
+}

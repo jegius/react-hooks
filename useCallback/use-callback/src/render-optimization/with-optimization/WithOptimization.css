@@ -1,0 +1,21 @@
+.with-optimization-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    min-height: 15rem;
+    gap: 1rem;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    background-color: #fafafa;
+    border-radius: .5rem;
+    box-shadow: 0 .2rem .5rem .1rem rgba(0,0,0,0.1);
+    font-size: 1.2rem;
+}
+
+.with-optimization-content span {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.4rem;
+}

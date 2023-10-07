@@ -1,0 +1,48 @@
+README.MD# Папка с сгенерированным билдом
+build/
+
+# Папка с модулями (например, node_modules)
+node_modules/
+
+# Сгенерированные файлы конфигурации IDE
+.vscode/
+.idea/
+
+# Логи компиляции и сборки
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Локальные конфигурационные файлы
+.env.local
+.env.*.local
+
+# Временные файлы
+*.log
+*.tmp
+
+# MacOS файлы
+.DS_Store
+
+!/homework.iml
+!/customHook.iml
+!/react-hooks-block.iml
+!/useCallback.iml
+
+!/useContext.iml
+
+!/useDebugValue.iml
+
+!/useEffect.iml
+
+!/useImperativeHandle.iml
+
+!/useLayoutEffect.iml
+
+!/useMemo.iml
+
+!/useReducer.iml
+
+!/useRef.iml
+
+!/useState.iml

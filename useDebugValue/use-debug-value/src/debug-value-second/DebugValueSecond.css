@@ -1,0 +1,40 @@
+.network-status {
+    max-width: 50rem;
+    padding: 1rem;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,0.3);
+    border-radius: .5rem;
+    transition: all .3s;
+}
+
+.network-status p {
+    font-size: 1.5rem;
+}
+
+.network-status button {
+    margin: .5rem;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.network-status button:nth-child(2) {
+    background: #007BFF;
+}
+
+.network-status button:nth-child(3) {
+    background: #dc3545;
+}
+
+.network-status button:nth-child(2):hover {
+    background: #0056b3;
+}
+
+.network-status button:nth-child(3):hover {
+    background: #c82333;
+}

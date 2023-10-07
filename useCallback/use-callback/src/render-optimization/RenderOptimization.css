@@ -1,0 +1,25 @@
+.render-optimization {
+    display: flex;
+    justify-content: space-between;
+}
+.child-wrapper {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 10rem;
+    gap: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border: 2px solid #eee;
+    border-radius: .5rem;
+}
+.child-wrapper input {
+    width: 100%;
+    padding: .5rem;
+    box-sizing: border-box;
+    border-radius: .3rem;
+    border: .1rem solid gray;
+}

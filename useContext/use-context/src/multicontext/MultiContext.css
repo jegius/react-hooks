@@ -1,0 +1,26 @@
+.my-component {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: .5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color .5s ease;
+    max-width: 50rem;
+    min-width: 20rem;
+    min-height: 5rem;
+}
+
+.my-component.dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.my-component.light {
+    background-color: #fff;
+    color: #333;
+}
+
+.root {
+    display: flex;
+    justify-content: center;
+}

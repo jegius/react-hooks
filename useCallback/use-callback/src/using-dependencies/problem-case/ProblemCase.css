@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    background-color: #f5f5f5;
+}
+
+.increment-button {
+    color: #fff;
+    background-color: #007BFF;
+    border-color: #007BFF;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+
+.increment-button:hover {
+    background-color: #0056b3;
+    border-color: #004c99;
+}

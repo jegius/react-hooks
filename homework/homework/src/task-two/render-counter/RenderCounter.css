@@ -1,0 +1,12 @@
+.counter-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+}
+
+.render-count {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}

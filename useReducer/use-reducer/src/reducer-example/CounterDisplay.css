@@ -1,0 +1,17 @@
+.count-display-container {
+    max-width: 50rem;
+    padding: 1rem;
+    margin: 1rem auto;
+    text-align: center;
+
+    font-size: 2rem;
+
+    border-radius: .8rem;
+    box-shadow: 0 .4rem 1.5rem rgba(0, 0, 0, .2);
+
+    transition: all .3s ease-in-out;
+}
+
+.count-display-container:hover {
+    transform: scale(1.02);
+}

@@ -1,0 +1,41 @@
+.container {
+    max-width: 50rem;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: .3rem .3rem .5rem rgba(0, 0, 0, .2);
+    margin-bottom: 1rem;
+    transition: all .3s ease;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: .6rem .6rem 1rem rgba(0, 0, 0, .3);
+}
+
+.item {
+    width: 100%;
+    border-radius: .5rem;
+    box-shadow: .3rem .3rem .5rem rgba(0, 0, 0, .2);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all .3s ease;
+}
+
+.item:hover {
+    box-shadow: .6rem .6rem 1rem rgba(0, 0, 0, .3);
+}
+
+.loading {
+    text-align: center;
+    font-size: 2rem;
+}

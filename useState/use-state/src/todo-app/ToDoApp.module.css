@@ -1,0 +1,33 @@
+.todoApp {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+}
+
+.addButton {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.addButton:hover {
+    background-color: #45a049;
+}
+
+.taskList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.taskItem {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}

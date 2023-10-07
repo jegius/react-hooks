@@ -1,0 +1,26 @@
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+    padding: 1rem;
+    background-color: #ccc;
+    color: #333;
+    border-radius: 2rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
+
+.app button {
+    padding: 1rem 2rem;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: .5rem;
+    font-size: 1rem;
+    transition: all .3s;
+}
+
+.app button:hover {
+    background-color: #0056b3;
+}

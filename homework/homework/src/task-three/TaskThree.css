@@ -1,0 +1,54 @@
+.TaskThree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50rem;
+    margin: auto;
+    padding: 1rem;
+}
+
+.TaskThree input {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: .5rem;
+    border: .1rem solid #ccc;
+    box-shadow: .2rem .2rem .5rem rgba(0,0,0,.1);
+    transition: box-shadow .3s ease;
+}
+
+.TaskThree input:focus {
+    box-shadow: .2rem .2rem .5rem rgba(0,0,0,.3);
+}
+
+.TaskThree h1 {
+    box-shadow: .5rem .5rem 1rem rgba(0,0,0,.2);
+    border-radius: .5rem;
+    transition: all .3s ease;
+    font-size: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.TaskThree h1:hover {
+    transform: scale(1.1);
+    box-shadow: .5rem .5rem 1rem rgba(0,0,0,.4);
+}
+
+.TaskThree ul {
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+}
+
+.TaskThree ul li {
+    padding: 1rem;
+    margin: .5rem 0;
+    border-radius: .5rem;
+    box-shadow: .2rem .2rem .5rem rgba(0,0,0,.1);
+    transition: box-shadow .3s ease;
+}
+
+.TaskThree ul li:hover {
+    box-shadow: .2rem .2rem .5rem rgba(0,0,0,.3);
+}

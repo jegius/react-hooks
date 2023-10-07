@@ -1,0 +1,26 @@
+.my-component {
+    max-width: 50rem;
+    margin: auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: .5rem;
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
+    transition: box-shadow .3s ease;
+}
+
+.my-component p {
+    font-size: 1rem;
+}
+
+.my-component:hover {
+    box-shadow: 0 .4rem 1rem rgba(0,0,0,.2);
+}
+
+.my-component input {
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: .3rem;
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
+}
