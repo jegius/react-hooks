@@ -12,6 +12,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    margin: 5rem;
     position: absolute;
     transform: rotateY(-90deg);
     transition: opacity .5s, transform .5s;

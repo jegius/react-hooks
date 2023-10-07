@@ -1,0 +1,35 @@
+.button,
+.input-field {
+    font-family: 'Open Sans', sans-serif;
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, .2);
+    margin: .5rem;
+    transition: all .3s ease-out;
+    max-width: 50rem;
+}
+
+.input-field {
+    border: none;
+    outline-color: transparent;
+    width: 100%;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #45a049;
+    box-shadow: 0.2rem 0.2rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    background-color: #2e7d32;
+    box-shadow: none;
+}
