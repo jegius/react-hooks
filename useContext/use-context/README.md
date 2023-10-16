@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Описание компонента App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Основной корневой компонент приложения. Он содержит различные примеры использования хука `useContext` в различных контекстах.
 
-## Available Scripts
+## Подробное описание элементов кода
 
-In the project directory, you can run:
+**Импорты:**
 
-### `npm start`
+```javascript
+import {ComponentsWrapper} from './ComponentsWrapper';
+import StateManagement from './StateManagement';
+import './App.css';
+import MultiContext from './MultiContext';
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `ComponentsWrapper` - общий компонент-оболочка для всех компонентов в приложении.
+- `StateManagement` - компонент, в котором показаны разные способы управления состоянием.
+- Импорт файла CSS для стилей приложения.
+- `MultiContext` - компонент, демонстрирующий работу с несколькими контекстами в React.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Структура компонента:**
 
-### `npm test`
+```javascript
+function App() {
+    return (
+        <>
+            <ComponentsWrapper>
+                <>
+                    <h1 className="title">Работа с стейтом</h1>
+                    <StateManagement/>
+                </>
+                <>
+                    <h1 className="title">Несколько Контекстов</h1>
+                    <MultiContext />
+                </>
+            </ComponentsWrapper>
+        </>
+    );
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+export default App;
+```
 
-### `npm run build`
+- В пакет компонента входят два основных раздела: "Работа с состоянием" и "Несколько контекстов". В каждом разделе содержится соответствующий заголовок и компонент, который демонстрирует определенный аспект использования хука `useContext`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Компоненты примеров
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Работа с состоянием:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Перейти к [Подробному описанию](./src/state-managment/README.md)
 
-### `npm run eject`
+**Несколько контекстов:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Перейти к [Подробному описанию](./src/multicontext/README.md)
+```bash
+# Установите зависимости
+$ npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Запустите проект
+$ npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере для отображения проекта.

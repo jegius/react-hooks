@@ -1,7 +1,7 @@
 import React, {createContext} from 'react';
 import './StateManagment.css';
-import ProblemCase from './ProblemCase';
-import OptimizedCase from './OptimizedCase';
+import ProblemCase from './problem-case/ProblemCase';
+import OptimizedCase from './optimized-case/OptimizedCase';
 
 export default function StateManagement() {
     return (

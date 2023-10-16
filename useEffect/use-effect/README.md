@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+## Главный компонент приложения - App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Компонент `App` является корневым компонентом приложения. Он объединяет все примеры использования хука `useEffect` и отображает их на одной странице.
 
-## Available Scripts
+### Содержание
 
-In the project directory, you can run:
+1. Импорт модулей и компонентов
+2. Рендеринг компонента
 
-### `npm start`
+### 1. Импорт модулей и компонентов
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```javascript
+import './App.css';
+import {ComponentsWrapper} from './ComponentsWrapper';
+import SideEffect from './SideEffect';
+import WithDependency from './WithDependency';
+import CancelEvent from './CancelEvent';
+import ComponentLiveCycleEmulation from './ComponentLiveCycleEmulation';
+```
+В этом примере мы импортируем `ComponentsWrapper`, который является оберткой для отображения набора компонентов, а также различные компоненты, демонстрирующие использование хука `useEffect`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Рендеринг компонента
+```javascript
+function App() {
+    return (
+        <>
+            <ComponentsWrapper>
+                <>
+                    <h1 className="title">Побочные эффекты при рендеринге</h1>
+                    <SideEffect/>
+                </>
+                <>
+                    <h1 className="title">Использование массива зависимостей</h1>
+                    <WithDependency/>
+                </>
+                <>
+                    <h1 className="title">Отмена событий</h1>
+                    <CancelEvent/>
+                </>
+                <>
+                    <h1 className="title">Хуки жизненного цикла</h1>
+                    <ComponentLiveCycleEmulation/>
+                </>
+            </ComponentsWrapper>
+        </>
+    );
+}
 
-### `npm test`
+export default App;
+```
+Здесь мы рендерим приложение с использованием всех импортированных компонентов.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Структура проекта
 
-### `npm run build`
+- [Побочные эффекты при рендеринге (`SideEffect`)](./src/side-effect/README.md)
+- [Использование массива зависимостей (`WithDependency`)](./src/with-dependency/README.md)
+- [Отмена событий (`CancelEvent`)](./src/cancel-event/README.md)
+- [Хуки жизненного цикла (`ComponentLiveCycleEmulation`)](./src/component-live-cycle-emulation/README.md)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Cсылки ведут к отдельным файлам README.md, которые предоставляют детальное описание каждого компонента.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Установите зависимости
+$ npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Запустите проект
+$ npm start
+```
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере для отображения проекта.

@@ -1,22 +1,14 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { debounce } from 'lodash';
+import React, { useState, useEffect, useCallback } from 'react';
 import './CancelEvent.css';
 
 const CancelEvent = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [isLoading, setLoading] = useState(true);
-    const abortControllerRef = useRef(null);
 
-    const debouncedFetchData = useCallback(debounce(async (value) => {
-        if (abortControllerRef.current) {
-            abortControllerRef.current.abort();
-        }
-
-        abortControllerRef.current = new AbortController();
-
+    const fetchData = useCallback(async (value, abortController) => {
         try {
-            const res = await fetch(`https://jsonplaceholder.typicode.com/posts?title=${value}`, { signal: abortControllerRef.current.signal });
+            const res = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${value}`, { signal: abortController.signal });
             const data = await res.json();
             setData(data);
         } catch (error) {
@@ -28,18 +20,15 @@ const CancelEvent = () => {
         } finally {
             setLoading(false);
         }
-    }, 500), []);
+    }, []);
 
     useEffect(() => {
+        const abortController = new AbortController();
         setLoading(true);
-        debouncedFetchData(searchTerm);
+        fetchData(searchTerm, abortController);
 
-        return () => {
-            if (abortControllerRef.current) {
-                abortControllerRef.current.abort();
-            }
-        };
-    }, [searchTerm, debouncedFetchData]);
+        return () => abortController.abort();
+    }, [searchTerm, fetchData]);
 
     const handleSearchInputChange = (event) => {
         setSearchTerm(event.target.value);

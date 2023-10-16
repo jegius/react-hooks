@@ -16,8 +16,3 @@
 .button:focus {
     outline: none;
 }
-
-.wrapper {
-    margin: 5rem;
-    align-self: center;
-}

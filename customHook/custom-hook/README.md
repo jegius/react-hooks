@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Советы по созданию кастомных хуков в React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Введение
+Перед тем, как мы начнем, важно помнить, что хуки - это мощный инструмент в эко-системе React, они позволяют использовать состояния и других возможности React без написания классов.
 
-## Available Scripts
+## Основные моменты
+### Используйте стандартные хуки как основу
 
-In the project directory, you can run:
+Ваши пользовательские куки должны опираться на встроенные хуки React, такие как `useState`, `useEffect`, `useContext` и др.
 
-### `npm start`
+```jsx
+function useDocumentTitle(title) {
+    useEffect(() => {
+        document.title = title;
+    }, [title]);
+}
+```
+В примере выше мы используем хук `useEffect` для изменения заголовка документа.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Дайте хукам говорящие имена
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Обычно пользовательские куки начинаются с `use`, например `useDebounce`, `useLocalStorage`. Этот способ именования помогает легче определить, где именно в коде используются хуки.
 
-### `npm test`
+```jsx
+function useLocalStorage(key, initialValue) {
+    const [storedValue, setStoredValue] = useState(() => {
+        try {
+            const item = window.localStorage.getItem(key);
+            return item ? JSON.parse(item) : initialValue;
+        } catch (error) {
+            console.log(error);
+            return initialValue;
+        }
+    });
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    const setValue = (value) => {
+        try {
+            setStoredValue(value);
+            window.localStorage.setItem(key, JSON.stringify(value));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    return [storedValue, setValue];
+}
+```
 
-### `npm run build`
+### Используйте хуки для переиспользуемой логики
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Создавайте пользовательские хуки для кода, логика которого может быть использована в разных компонентах.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```jsx
+// хук useCounter
+function useCounter() {
+    const [value, setValue] = useState(0);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    const increment = () => {
+        setValue(prevCount => prevCount + 1);
+    };
 
-### `npm run eject`
+    const decrement = () => {
+        setValue(prevCount => prevCount - 1);
+    };
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    return [value, { increment, decrement }];
+}
+// Использование useCounter
+export default function MyComponent() {
+    const [count, {increment, decrement}] = useCounter();
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    return (
+        <div>
+            {count}
+            <button onClick={increment}>Increment</button>
+            <button onClick={decrement}>Decrement</button>
+        </div>
+    );
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Правила хуков
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Помимо этих советов, всегда следуйте [Правилам хуков](https://ru.reactjs.org/docs/hooks-rules.html) от создателей React:
 
-## Learn More
+1. Только вызывайте хуки на верхнем уровне. Не вызывайте хуки внутри циклов, условий или вложенных функций.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Только вызывайте хуки из функциональных компонентов React. Не вызывайте хуки из обычных JavaScript-функций.
+   Хуки синтаксический сахар, который работает только внутри функциональных компонентов React. Они не работают в классовых компонентах или обычных JavaScript-функциях. Другими словами, не вызывайте `useState`, `useEffect` и другие встроенные хуки из обычных функций. Вместо этого вызывайте их на верхнем уровне вашего функционального компонента или пользовательского хука.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Вот пример хорошего использования хука `useState`:
 
-### Code Splitting
+```jsx
+function MyComponent() {
+    // Хорошо: хук вызывается на верхнем уровне функционального компонента
+    const [myState, setMyState] = useState(0);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    // some other code...
 
-### Analyzing the Bundle Size
+    return (
+        <div>
+            {/* some JSX... */}
+        </div>
+    );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+А вот пример неправильного использования:
 
-### Making a Progressive Web App
+```jsx
+function someRegularFunction() {
+    // Плохо: хук вызывается в обычной функции, а не в функциональном компоненте React
+    const [myState, setMyState] = useState(0);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    // some more code...
+}
+```
 
-### Advanced Configuration
+Такое использование вызовет ошибку в рантайме и ваше приложение перестанет работать. Всегда помните об этом правиле при использовании хуков.
+```bash
+# Установите зависимости
+$ npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Запустите проект
+$ npm start
+```
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере для отображения проекта.

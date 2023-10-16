@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './StateInitialization.module.css';
 
+
 function getRandomNumber() {
     console.log('Генерация случайного числа');
     return Math.random();
@@ -15,7 +16,7 @@ export function StateInitialization() {
     });
 
     return (
-        <div className={styles.wrapper}>
+        <div>
             <p>Счетчик 1: {count1}</p>
             <p>Счетчик 2: {count2}</p>
             <button className={styles.button} onClick={() => setCount1(count1 + 1)}>Увеличить счетчик 1</button>

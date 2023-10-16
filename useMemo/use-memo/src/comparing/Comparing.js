@@ -12,13 +12,13 @@ function Comparing() {
 
     const [colorState, setColorState] = useState(initialColorState);
 
-    const memoizedColor = useMemo(() => {
-        return `rgb(${colorState.color.r},${colorState.color.g},${colorState.color.b})`;
-    }, [colorState]);
-
     // const memoizedColor = useMemo(() => {
     //     return `rgb(${colorState.color.r},${colorState.color.g},${colorState.color.b})`;
-    // }, [colorState.color.r, colorState.color.g, colorState.color.b]);
+    // }, [colorState]);
+
+    const memoizedColor = useMemo(() => {
+        return `rgb(${colorState.color.r},${colorState.color.g},${colorState.color.b})`;
+    }, [colorState.color.r, colorState.color.g, colorState.color.b]);
 
     const changeColor = () => {
         initialColorState.color.r = Math.floor(Math.random()*256);

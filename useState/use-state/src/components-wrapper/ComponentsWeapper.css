@@ -8,8 +8,13 @@
     justify-content: center;
 }
 
+:root {
+    --width: calc(80% - 10rem);
+}
+
 .section {
-    width: 100%;
+    width: var(--width);
+    left: calc(var(--width) - 50%);
     height: 100%;
     opacity: 0;
     position: absolute;

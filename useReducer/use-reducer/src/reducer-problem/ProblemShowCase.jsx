@@ -1,6 +1,6 @@
 import React from 'react';
-import ReducerProblemFix from './ReducerProblemFix';
-import ReducerProblem from './ReducerProblem';
+import ReducerProblemFix from './reducer-problem-fix/ReducerProblemFix';
+import ReducerProblem from './reducer-problem/ReducerProblem';
 import './ProblemShowCase.css';
 
 const items = Array.from({ length: 20 }, (_, id) => ({

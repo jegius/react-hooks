@@ -1,7 +1,7 @@
 import React from 'react';
 import './ExpensiveOperation.css';
-import WithOptimization from './WithOptimization';
-import WithoutOptimization from './WithoutOptimization';
+import WithOptimization from './with-optimization/WithOptimization';
+import WithoutOptimization from './without-optimization/WithoutOptimization';
 
 export const expensiveOperation = (number) => {
     console.log('Вызывается ресурсоёмкая операция');

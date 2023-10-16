@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
-import { CountContext } from './CounterContext';
-import CounterDisplay from './CounterDisplay';
-import CounterControls from './CounterControls';
+import { CountContext } from './counter-context/CounterContext';
+import CounterDisplay from './counter-display/CounterDisplay';
+import CounterControls from './counter-controls/CounterControls';
 import './ReducerExample.css';
 
 const initialState = { count: 0, step: 1 };

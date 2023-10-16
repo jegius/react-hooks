@@ -1,4 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
+import { debounce } from 'lodash';
 
 export function WithOptimization() {
     const [query, setQuery] = useState('react');
@@ -10,19 +11,19 @@ export function WithOptimization() {
         setFunctionCreationCounter(prevState => prevState + 1)
     }, []);
 
-    const fetchData = useCallback(() => {
+    const fetchData = useCallback(debounce((request) => {
         incrementCounter();
-        fetch(`https://hn.algolia.com/api/v1/search?query=${query}`)
+        fetch(`https://hn.algolia.com/api/v1/search?query=${request}`)
             .then(response => response.json())
             .then(response => {
                 setData(response?.hits.splice(0, 6));
             })
             .catch(console.error);
-    }, [query, incrementCounter]);
+    }, 500), [incrementCounter]);
 
     useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+        fetchData(query);
+    }, [query]);
 
     return (
         <div className="container">

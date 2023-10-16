@@ -19,7 +19,7 @@ function App() {
               <RenderOptimization />
           </>
           <>
-            <h1 className="title">Хранение callback с помощью useRef</h1>
+            <h1 className="title">Хранение значения с помощью useRef</h1>
               <CallbackStorage />
           </>
           <>

@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Примеры использования хука useDebugValue в React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Библиотека кода состоит из нескольких примеров, демонстрирующих использование хука `useDebugValue` в React.
 
-## Available Scripts
+**Структура проекта:**
 
-In the project directory, you can run:
+```bash
+├── App.css
+├── debug-value-usage
+│   ├── DebugValueUsage.js
+│   └── README.md
+├── debug-value-second
+│   ├── DebugValueSecond.js
+│   └── README.md
+└── components-wrapper
+    ├── ComponentsWrapper.js
+    └── README.md
+```
+Каждый пример сопровождается файлом README.md, в котором детально описан функционал и особенности его реализации.
 
-### `npm start`
+**[DebugValueUsage](src/debug-value-usage/README.md)**
+* Базовый пример использования `useDebugValue` для отображения состояния загрузки в инструментах разработки React.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**[DebugValueSecond](src/debug-value-second/README.md)**
+* Еще один пример использования `useDebugValue`, который демонстрирует различные варианты его применения в зависимости от условий и состояний.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Все примеры собраны в главном компоненте `App` и обернуты в `ComponentsWrapper`. Подробнее про `ComponentsWrapper` можно узнать в его [файле README.md](./components-wrapper/README.md).
 
-### `npm test`
+**App.js**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+import './App.css';
+import DebugValueUsage from './DebugValueUsage';
+import {ComponentsWrapper} from './ComponentsWrapper';
+import DebugValueSecond from './DebugValueSecond';
 
-### `npm run build`
+function App() {
+    return (
+        <ComponentsWrapper>
+            <>
+                <h1 className="title">Базовый пример</h1>
+                <DebugValueUsage/>
+            </>
+            <>
+                <h1 className="title">Еще один пример</h1>
+                <DebugValueSecond/>
+            </>
+        </ComponentsWrapper>
+    );
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default App;
+```
+Так, в корневом файле README собраны ссылки на все примеры использования `useDebugValue`, объединенные под одной оболочкой для более удобного доступа и изучения.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Установите зависимости
+$ npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Запустите проект
+$ npm start
+```
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере для отображения проекта.

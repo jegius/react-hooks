@@ -1,7 +1,7 @@
 import React from 'react';
-import {ThemeContextProvider, useTheme} from './ThemeContextProvider';
-import {LanguageContextProvider, useLanguage} from './LanguageContextProvider';
-import NestedComponent from './NestedComponent';
+import {ThemeContextProvider, useTheme} from './theme-provider/ThemeContextProvider';
+import {LanguageContextProvider, useLanguage} from './language-provider/LanguageContextProvider';
+import NestedComponent from './neasted-component/NestedComponent';
 import './MultiContext.css';
 
 export default function MultiContext() {
