@@ -52,7 +52,7 @@ export default function TaskThree() {
         {filteredPosts.map((post) => (
           <li key={post.id}>
             <h3>{post.title}</h3>
-            <p>{post.content}</p>
+            <p>{post.body}</p>
           </li>
         ))}
       </ul>
