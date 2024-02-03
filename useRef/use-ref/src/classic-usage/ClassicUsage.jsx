@@ -13,7 +13,7 @@ function ClassicUsage() {
     };
 
     const handleClick = () => {
-        inputEl.current.value = '';
+        setSearchTerm("")
         inputEl.current.focus();
         setSearchResults([]);
     }

@@ -1,13 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './BrowserEventsWithRef.css';
 
 function BrowserEventsWithRef() {
     const buttonRef = useRef(null);
+    const [message, setMessage] = useState();
 
     useEffect(() => {
         const handleDocumentClick = (event) => {
             if (buttonRef.current && !buttonRef.current.contains(event.target)) {
-                alert('Клик за пределами кнопки!');
+                setMessage('Клик за пределами кнопки!');
+            } else {
+                setMessage('Клик на кнопку!');
             }
         };
 
@@ -20,6 +23,7 @@ function BrowserEventsWithRef() {
 
     return (
         <div className="app">
+             <h3>{message}</h3>
             <button ref={buttonRef}>Кликнуть меня</button>
         </div>
     );

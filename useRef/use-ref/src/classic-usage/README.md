@@ -23,7 +23,7 @@ const inputEl = useRef(null);
 Эти действия выполняются в функции обработчике нажатия на кнопку сброса:
 ```javascript
 const handleClick = () => {
-        inputEl.current.value = '';
+        setSearchTerm("");
         inputEl.current.focus();
         setSearchResults([]);
 }
