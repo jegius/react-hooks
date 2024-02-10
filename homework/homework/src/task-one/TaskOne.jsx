@@ -1,14 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import './TaskOne.css';
 
-function TaskOne() {
-    /**
-     * Вынесите эти стейты в свой хук, все изменения полей должны валидирвоаться по разным правилам:
-     * firstName, lastName - не могут быть пустыми
-     * email - должен совпадать с паттерном email, оп которому стандартный email адрес- валидный, а test или @some или some@te - будут не валидны
-     * password - должен быть не меньше 5 символов и должен включать в себя цифры и сепц символы (%$@ и т.д.)
-     * confirmPassword - должен совпадать с password
-     * */
+function useForm(callback) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -16,41 +9,83 @@ function TaskOne() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
 
-    // Ваш хук должен возвращать фукцию которую будет использовать форма для сабмита данных
-    const onSubmitHandle = (event) => {
-        event.preventDefault();
+    const onSubmitHandle = useCallback(
+        (event) => {
+            event.preventDefault();
 
-        const {
-            firstName,
-            lastName,
-            email,
-            password,
-            confirmPassword,
-        } = event;
+            if (firstName === '' || lastName === '') {
+                setError('First name and last name are required');
+                return;
+            }
 
-        // Здесь вы можете обрабатывать логику отправки формы,
-        // например, вызвать ваш API для отправки данных формы
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                setError('Invalid email address');
+                return;
+            }
 
-        // После успешной отправки формы, очистите все поля
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+            if (password.length < 5 || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+                setError('Password must be at least 5 characters long and contain special characters');
+                return;
+            }
 
+            if (password !== confirmPassword) {
+                setError('Passwords do not match');
+                return;
+            }
 
-        // И используйте alert, чтобы показать результат
-        alert(JSON.stringify({firstName,
-            lastName,
-            email,
-            password,
-            confirmPassword,}));
+            callback({
+                firstName,
+                lastName,
+                email,
+                password,
+                confirmPassword,
+            });
+
+            setFirstName('');
+            setLastName('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+        },
+        [firstName, lastName, email, password, confirmPassword, callback]
+    )
+
+    return {
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        confirmPassword,
+        setConfirmPassword,
+        error,
+        onSubmitHandle,
     };
+}
 
-    // TODO: реализуйте пользовательский хук для валидации
-    // const submitForm = useSubmitForm(onSubmitHandle);
+function TaskOne() {
+    const submitForm = useForm((data) => {
+        alert(JSON.stringify(data));
+    });
 
-    // Замени сеттеры из стейта на callback-и из твоего хука
+    const {
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        confirmPassword,
+        setConfirmPassword,
+        error,
+        onSubmitHandle,
+    } = submitForm;
+
     return (
         <div className="form-container">
             <div className="error-message">{error}</div>
