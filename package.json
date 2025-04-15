@@ -1,0 +1,23 @@
+{
+  "name": "one",
+  "version": "1.0.0",
+  "description": "A React Hooks example project",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlavMech/react-hooks.git"
+  },
+  "author": "GlavMech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GlavMech/react-hooks/issues"
+  },
+  "homepage": "https://github.com/GlavMech/react-hooks#readme",
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  }
+}
