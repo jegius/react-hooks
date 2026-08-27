@@ -1,42 +1,54 @@
-import React from 'react'
-import RenderCounter from './render-counter/RenderCounter';
-import './TaskTwo.css';
+import React, { memo, useCallback, useMemo, useRef, useState } from "react";
+import RenderCounter from "./render-counter/RenderCounter";
+import "./TaskTwo.css";
 
 export default function TaskTwo() {
-    const update = useUpdate()
-    return (
-        <div className="TaskTwo">
-            <button onClick={update}>Обновить компонент</button>
-            {/*<RenderCounter />*/}
-            <Root />
-        </div>
-    )
+  const [, setCount] = useState(0);
+
+  const update = useCallback(() => {
+    setCount((counter) => counter + 1);
+  }, []);
+
+  const root = useMemo(() => <Root />, []);
+
+  return (
+    <div className="TaskTwo">
+      <button onClick={update}>Обновить компонент</button>
+
+      <RenderCounter />
+
+      {root}
+    </div>
+  );
 }
 
-const Root = () => {
-    const [value, setValue] = React.useState('')
-    const handleChange = (event) => {
-        setValue(event.target.value)
-    }
-    return (
-        <form className="form-container">
-            Введенное значение: {value}
-            {/*<RenderCounter />*/}
-            <Input onChange={handleChange} />
-        </form>
-    )
-}
+const Root = memo(() => {
+  const valueRef = useRef("");
 
-const Input = ({ onChange }) => {
-    return (
-        <div className="input-container">
-            <input type="text" className="input-field" name="value" onChange={onChange} />
-            {/*<RenderCounter />*/}
-        </div>
-    )
-}
+  const handleChange = useCallback((event) => {
+    valueRef.current = event.target.value;
+  }, []);
 
-function useUpdate() {
-    const [, setCount] = React.useState(0)
-    return () => { setCount(counter => counter + 1) }
-}
+  return (
+    <form className="form-container">
+      Введенное значение: {valueRef.current}
+      <Input onChange={handleChange} />
+      <RenderCounter />
+    </form>
+  );
+});
+
+const Input = memo(({ onChange }) => {
+  return (
+    <div className="input-container">
+      <input
+        type="text"
+        className="input-field"
+        name="value"
+        onChange={onChange}
+      />
+
+      <RenderCounter />
+    </div>
+  );
+});
